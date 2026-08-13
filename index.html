@@ -1,1135 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clearline Auto Care — Mobile Ceramic Glass Coating</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+CLEARLINE
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+AUTO
+CARE
 
-  :root {
-    --blue:        #6BBCDC;
-    --blue-bright: #89CFEE;
-    --blue-dim:    #3A7A96;
-    --blue-glow:   rgba(107,188,220,0.12);
-    --black:       #0A0A0A;
-    --near-black:  #111214;
-    --dark:        #181A1D;
-    --mid:         #252830;
-    --white:       #FFFFFF;
-    --off-white:   #F5F6F8;
-    --text-dim:    rgba(255,255,255,0.38);
-    --text-mid:    rgba(255,255,255,0.58);
-    --text-body:   #4A4E58;
-    --border-dark: rgba(255,255,255,0.07);
-    --border-blue: rgba(107,188,220,0.2);
-    --border-light:rgba(0,0,0,0.08);
-    --radius:      3px;
-    --radius-md:   6px;
-    --radius-lg:   10px;
-  }
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    background: var(--white);
-    color: var(--near-black);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 52px;
-    transition: background .35s, border-bottom .35s, padding .35s;
-  }
-  nav.scrolled {
-    background: rgba(10,10,10,0.94);
-    border-bottom: 1px solid var(--border-dark);
-    backdrop-filter: blur(16px);
-    padding: 16px 52px;
-  }
-  .logo {
-    display: flex; align-items: center; gap: 13px;
-    text-decoration: none;
-  }
-  .logo-word {
-    font-family: 'Inter', sans-serif; font-weight: 300;
-    font-size: 16px; letter-spacing: 0.26em; text-transform: uppercase;
-    color: var(--white);
-  }
-  .logo-rule { width: 1px; height: 26px; background: var(--blue); flex-shrink: 0; }
-  .logo-co {
-    font-family: 'Inter', sans-serif; font-weight: 400;
-    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--blue); line-height: 1.35;
-  }
-  .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
-  .nav-links a {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.13em;
-    text-transform: uppercase; color: var(--text-mid);
-    text-decoration: none; transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-cta {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.13em;
-    text-transform: uppercase; color: var(--black) !important;
-    background: var(--blue); padding: 10px 24px;
-    border-radius: var(--radius); text-decoration: none;
-    transition: background .2s !important;
-  }
-  .nav-cta:hover { background: var(--blue-bright) !important; }
+MOBILE CERAMIC GLASS COATING
+See through anything. Clearly.
+Professional-grade ceramic glass protection delivered to your driveway, office, or wherever your car lives. Twice a year, automatically.
+BOOK YOUR FIRST VISIT
+SEE HOW IT WORKS
 
-  /* ── HERO ── */
-  .hero {
-    position: relative; min-height: 100vh;
-    display: flex; align-items: center;
-    background: var(--near-black); overflow: hidden;
-  }
-  /* carbon-fiber-like subtle grid */
-  .hero-texture {
-    position: absolute; inset: 0; opacity: 0.07;
-    background-image:
-      repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%),
-      repeating-linear-gradient(-45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
-    background-size: 14px 14px;
-  }
-  .hero-gradient {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 65% 45%, rgba(107,188,220,0.06) 0%, transparent 60%),
-                linear-gradient(to bottom, transparent 60%, var(--near-black) 100%);
-  }
-  #rain-canvas {
-    position: absolute; inset: 0;
-    opacity: 0.22; pointer-events: none;
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 1200px; margin: 0 auto;
-    padding: 140px 52px 100px;
-    width: 100%;
-  }
-  .hero-eyebrow {
-    display: flex; align-items: center; gap: 14px;
-    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
-    text-transform: uppercase; color: var(--blue);
-    margin-bottom: 30px;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block; width: 30px; height: 1px; background: var(--blue);
-  }
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(56px, 7vw, 96px);
-    line-height: 1.02; letter-spacing: -0.01em;
-    color: var(--white); margin-bottom: 28px;
-    max-width: 660px;
-  }
-  h1 em { font-style: italic; color: var(--blue); }
-  .hero-sub {
-    font-size: 15px; font-weight: 300;
-    color: var(--text-mid); max-width: 400px;
-    line-height: 1.8; margin-bottom: 52px;
-  }
-  .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-block; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--black); background: var(--blue);
-    padding: 16px 38px; border-radius: var(--radius);
-    text-decoration: none; transition: background .2s, transform .15s;
-  }
-  .btn-primary:hover { background: var(--blue-bright); transform: translateY(-1px); }
-  .btn-outline {
-    display: inline-block; font-size: 11px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--text-mid); text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.18); padding-bottom: 2px;
-    transition: color .2s, border-color .2s;
-  }
-  .btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+12mo
+Coating lifespan
+per application
 
-  /* hero bottom bar */
-  .hero-stats {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-    display: flex; border-top: 1px solid var(--border-dark);
-  }
-  .hero-stat {
-    flex: 1; padding: 22px 32px;
-    border-right: 1px solid var(--border-dark);
-    display: flex; align-items: center; gap: 16px;
-  }
-  .hero-stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px; font-weight: 300; color: var(--white); line-height: 1;
-    white-space: nowrap;
-  }
-  .stat-num sup { font-size: 16px; font-weight: 300; }
-  .stat-label {
-    font-size: 11px; font-weight: 300; letter-spacing: 0.08em;
-    color: var(--text-dim); line-height: 1.4;
-  }
-  .stat-divider { width: 1px; height: 24px; background: var(--blue); opacity: 0.5; flex-shrink: 0; }
+90min
+Average service
+visit time
 
-  /* ── TRUST BAR ── */
-  .trust-bar {
-    background: var(--dark);
-    border-bottom: 1px solid var(--border-blue);
-    padding: 16px 52px;
-    display: flex; align-items: center; justify-content: center;
-    gap: 40px; flex-wrap: wrap;
-  }
-  .trust-item {
-    display: flex; align-items: center; gap: 9px;
-    font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--text-dim);
-  }
-  .trust-pip { width: 4px; height: 4px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+0
+Shop visits
+ever required
 
-  /* ── SHARED SECTION STYLES ── */
-  .eyebrow {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 10px; font-weight: 500; letter-spacing: 0.26em;
-    text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
-  }
-  .eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--blue); }
-  h2 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: clamp(34px, 4vw, 52px); line-height: 1.1;
-    margin-bottom: 14px;
-  }
-  h2.light { color: var(--white); }
-  h2.dark { color: var(--near-black); }
-  .body-text {
-    font-size: 14px; font-weight: 300;
-    line-height: 1.85; max-width: 500px;
-  }
-  .body-text.light { color: var(--text-mid); }
-  .body-text.dark { color: var(--text-body); }
-  .sec { padding: 100px 52px; max-width: 1200px; margin: 0 auto; }
+2×
+Per year,
+auto-scheduled
 
-  /* ── HOW IT WORKS ── */
-  .process-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: start; }
-  .steps { display: flex; flex-direction: column; }
-  .step {
-    display: flex; gap: 22px; padding: 26px 0;
-    border-bottom: 1px solid var(--border-light);
-    transition: opacity .2s;
-  }
-  .step:first-child { border-top: 1px solid var(--border-light); }
-  .step-n {
-    font-family: 'Cormorant Garamond', serif; font-size: 13px;
-    font-weight: 300; color: var(--blue); letter-spacing: 0.08em;
-    min-width: 26px; padding-top: 2px;
-  }
-  .step-title { font-size: 14px; font-weight: 500; color: var(--near-black); margin-bottom: 5px; }
-  .step-desc { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.7; }
-  .step-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-  .tag {
-    font-size: 10px; font-weight: 400; letter-spacing: 0.08em;
-    padding: 3px 9px; border-radius: 20px;
-    background: var(--off-white); color: var(--text-body);
-  }
-  .tag.blue { background: rgba(107,188,220,0.12); color: var(--blue-dim); }
+GLASS SPECIALISTS ONLY
 
-  .process-card {
-    position: sticky; top: 120px;
-    background: var(--near-black); border-radius: var(--radius-lg);
-    border: 1px solid var(--border-blue); padding: 40px;
-  }
-  .card-eyebrow {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--blue); margin-bottom: 24px;
-  }
-  .card-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 68px; font-weight: 300; color: var(--white); line-height: 1;
-  }
-  .card-label { font-size: 12px; font-weight: 300; color: var(--text-dim); margin-bottom: 28px; margin-top: 4px; }
-  .card-hr { height: 1px; background: var(--border-dark); margin-bottom: 26px; }
-  .checklist { display: flex; flex-direction: column; gap: 13px; }
-  .check-row { display: flex; align-items: flex-start; gap: 11px; }
-  .check-pip { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 7px; }
-  .check-text { font-size: 13px; font-weight: 300; color: var(--text-mid); line-height: 1.55; }
-  .check-text.dim { color: var(--text-dim); }
-  .check-pip.dim { background: rgba(255,255,255,0.12); }
+MOBILE — WE COME TO YOU
 
-  /* ── PLANS ── */
-  .plans-bg { background: var(--off-white); padding: 100px 0; }
-  .plans-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; }
-  .plans-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 52px; gap: 24px; flex-wrap: wrap;
-  }
-  .plans-header-note { font-size: 13px; font-weight: 300; color: var(--text-body); max-width: 260px; line-height: 1.7; }
-  .plans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: start; }
+TWICE-YEARLY SUBSCRIPTION
 
-  .plan-card {
-    background: var(--white); border: 1px solid rgba(0,0,0,0.08);
-    border-radius: var(--radius-lg); padding: 36px 30px;
-    position: relative; transition: transform .2s, box-shadow .2s;
-  }
-  .plan-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-  .plan-card.featured {
-    background: var(--near-black); border-color: var(--blue-dim);
-  }
-  .plan-badge {
-    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-    background: var(--blue); color: var(--black);
-    font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 5px 14px; border-radius: 0 0 var(--radius) var(--radius);
-  }
-  .plan-name {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--text-body); margin-bottom: 18px;
-  }
-  .featured .plan-name { color: var(--text-dim); }
-  .plan-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 54px; font-weight: 300; color: var(--near-black); line-height: 1;
-  }
-  .featured .plan-price { color: var(--white); }
-  .plan-per { font-size: 12px; font-weight: 300; color: var(--text-body); margin-top: 4px; margin-bottom: 26px; }
-  .featured .plan-per { color: var(--text-dim); }
-  .plan-hr { height: 1px; background: var(--border-light); margin-bottom: 22px; }
-  .featured .plan-hr { background: var(--border-dark); }
-  .plan-features { display: flex; flex-direction: column; gap: 11px; margin-bottom: 30px; }
-  .plan-feat {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.5;
-  }
-  .featured .plan-feat { color: var(--text-mid); }
-  .feat-check { color: var(--blue); font-size: 11px; flex-shrink: 0; margin-top: 1px; }
-  .plan-btn {
-    display: block; text-align: center;
-    font-size: 11px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
-    padding: 13px; border-radius: var(--radius); text-decoration: none;
-    border: 1px solid var(--near-black); color: var(--near-black);
-    transition: all .2s;
-  }
-  .plan-btn:hover { background: var(--near-black); color: var(--white); }
-  .featured .plan-btn { background: var(--blue); border-color: var(--blue); color: var(--black); }
-  .featured .plan-btn:hover { background: var(--blue-bright); border-color: var(--blue-bright); }
+FAMILY PLAN AVAILABLE
 
-  /* ── WHY CERAMIC ── */
-  .why-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: center; }
-  table.compare { width: 100%; border-collapse: collapse; }
-  .compare th {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--text-body); text-align: left; padding-bottom: 14px;
-    border-bottom: 1px solid var(--border-light);
-  }
-  .compare th.ours { color: var(--blue-dim); text-align: right; }
-  .compare td {
-    font-size: 13px; font-weight: 300; color: var(--text-body);
-    padding: 13px 0; border-bottom: 1px solid var(--border-light); vertical-align: middle;
-  }
-  .compare td.ours { text-align: right; color: var(--near-black); font-weight: 400; }
-  .compare td.ours.strong { color: var(--blue-dim); font-weight: 500; }
+NO CONTRACTS · CANCEL ANYTIME
+THE PROCESS
+Five steps. Zero hassle.
+From booking to clear glass in one visit. Subscribers get their second appointment auto-scheduled — no admin, no chasing.
+01
+Book online in under 2 minutes
+Choose your plan, pick a date, and enter your location. No phone calls, no quotes, no deposit required.
+Pick your plan
+Select a slot
+Enter location
+02
+We confirm and come to you
+You'll get your tech's name and a 30-minute arrival window by SMS. Our van is fully stocked — we bring everything.
+SMS confirmation
+Arrival window
+03
+Glass decontamination and prep
+We remove water spots, mineral deposits, and road film that spray-on treatments can't touch. The coating bonds to clean glass — not grime.
+Decontamination
+Polish if needed
+04
+Ceramic coating, glass by glass
+Each pane is coated in controlled layers and cured. Most vehicles take 60–90 minutes. SUVs and trucks run 90–120.
+Ceramic application
+60–90 min total
+05
+Inspection, care card, and you're done
+We walk through every pane with you before we leave. Subscribers get their next visit auto-booked for 6 months out.
+Auto-scheduled next visit
+Care instructions
+WHAT YOU NEED TO HAVE READY
+3
+things — that's it
 
-  .why-benefits { display: flex; flex-direction: column; gap: 28px; }
-  .why-b-title {
-    font-size: 14px; font-weight: 500; color: var(--near-black);
-    margin-bottom: 5px; display: flex; align-items: center; gap: 10px;
-  }
-  .why-b-title::before { content: ''; width: 18px; height: 1px; background: var(--blue); display: block; }
-  .why-b-desc { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.75; padding-left: 28px; }
 
-  /* ── SUBSCRIPTION ── */
-  .sub-bg { background: var(--near-black); padding: 100px 0; }
-  .sub-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .sub-card { background: var(--dark); border: 1px solid var(--border-blue); border-radius: var(--radius-lg); padding: 40px; }
-  .sub-card-head { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 24px; }
-  .timeline { display: flex; flex-direction: column; }
-  .tl-event { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border-dark); }
-  .tl-event:last-child { border-bottom: none; }
-  .tl-pip { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
-  .tl-pip.dim { background: rgba(255,255,255,0.12); }
-  .tl-month { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); min-width: 56px; padding-top: 1px; }
-  .tl-month.dim { color: var(--text-dim); }
-  .tl-title { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
-  .tl-title.dim { color: var(--text-dim); }
-  .tl-desc { font-size: 12px; font-weight: 300; color: var(--text-dim); line-height: 1.5; }
+Have the car accessible at your chosen location
 
-  .family-box {
-    margin-top: 32px; padding: 20px 22px;
-    background: rgba(107,188,220,0.07); border: 1px solid var(--border-blue);
-    border-radius: var(--radius-md); display: flex; gap: 14px; align-items: flex-start;
-  }
-  .family-icon { color: var(--blue); font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .family-title { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
-  .family-desc { font-size: 12px; font-weight: 300; color: var(--text-dim); line-height: 1.6; }
+Leave about 6 feet of clearance around the vehicle
 
-  /* ── TESTIMONIALS ── */
-  .reviews-bg { background: var(--off-white); padding: 100px 0; }
-  .reviews-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
-  .review-card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-lg); padding: 32px; }
-  .review-stars { font-size: 11px; color: var(--blue); letter-spacing: 3px; margin-bottom: 16px; }
-  .review-quote { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; font-style: italic; line-height: 1.65; color: var(--near-black); margin-bottom: 22px; }
-  .review-author { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-body); }
-  .review-vehicle { font-size: 11px; font-weight: 300; color: #9099A8; margin-top: 2px; }
+Avoid washing the glass for 24 hours after the visit
 
-  /* ── SERVICE AREA ── */
-  .area-bg { background: var(--white); padding: 100px 0; }
-  .area-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .area-map-wrap { position: relative; }
-  .area-map {
-    background: var(--off-white); border-radius: var(--radius-lg); height: 320px;
-    display: flex; align-items: center; justify-content: center;
-    border: 1px solid var(--border-light); overflow: hidden; position: relative;
-  }
-  .area-map::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-    background-size: 26px 26px;
-  }
-  .area-map-pin {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -60%);
-  }
-  .pin-ring {
-    width: 40px; height: 40px; border-radius: 50%;
-    border: 2px solid var(--blue); opacity: 0.3;
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-    animation: pulse 2s ease-out infinite;
-  }
-  .pin-ring.r2 { width: 60px; height: 60px; animation-delay: .5s; }
-  @keyframes pulse { 0%{opacity:.3;transform:translate(-50%,-50%) scale(1)} 100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)} }
-  .pin-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
-  .area-map-label {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.16em;
-    text-transform: uppercase; color: #9099A8; position: absolute; bottom: 20px;
-  }
-  .zip-row { display: flex; gap: 0; margin-top: 22px; }
-  .zip-in {
-    flex: 1; border: 1px solid rgba(0,0,0,0.13); border-right: none;
-    border-radius: var(--radius) 0 0 var(--radius);
-    padding: 12px 18px; font-family: 'Inter', sans-serif; font-size: 13px;
-    font-weight: 300; color: var(--near-black); background: var(--white);
-    outline: none; transition: border-color .2s;
-  }
-  .zip-in:focus { border-color: var(--blue); }
-  .zip-btn {
-    background: var(--blue); color: var(--black); border: none;
-    padding: 12px 20px; font-family: 'Inter', sans-serif; font-size: 11px;
-    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    border-radius: 0 var(--radius) var(--radius) 0; cursor: pointer; transition: background .2s;
-  }
-  .zip-btn:hover { background: var(--blue-bright); }
-  .area-features { display: flex; flex-direction: column; gap: 22px; }
-  .area-feat { display: flex; gap: 16px; align-items: flex-start; }
-  .area-feat-icon {
-    width: 38px; height: 38px; border-radius: var(--radius-md);
-    background: rgba(107,188,220,0.1); display: flex; align-items: center;
-    justify-content: center; flex-shrink: 0; font-size: 15px; color: var(--blue);
-  }
-  .area-feat-title { font-size: 14px; font-weight: 500; color: var(--near-black); margin-bottom: 4px; }
-  .area-feat-desc { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.65; }
+WHAT YOU DON'T NEED TO DO
 
-  /* ── BOOK CTA ── */
-  .book-bg { background: var(--near-black); padding: 110px 52px; text-align: center; position: relative; overflow: hidden; }
-  .book-bg::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(107,188,220,0.08) 0%, transparent 65%);
-  }
-  .book-inner { position: relative; z-index: 1; }
-  .book-actions { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 48px; }
+Pre-wash the car
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black); border-top: 1px solid var(--border-dark);
-    padding: 44px 52px;
-  }
-  .footer-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 20px;
-  }
-  .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
-  .footer-links a {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-dim); text-decoration: none; transition: color .2s;
-  }
-  .footer-links a:hover { color: rgba(255,255,255,0.55); }
-  .footer-copy { font-size: 11px; font-weight: 300; color: var(--text-dim); }
+Be home — just reachable by SMS
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 920px) {
-    nav, nav.scrolled { padding: 18px 24px; }
-    .nav-links { display: none; }
-    .hero-content { padding: 120px 24px 80px; }
-    .hero-stats { flex-direction: column; }
-    .hero-stat { border-right: none; border-bottom: 1px solid var(--border-dark); }
-    .trust-bar { gap: 20px; padding: 16px 24px; }
-    .sec { padding: 72px 24px; }
-    .process-wrap { grid-template-columns: 1fr; gap: 48px; }
-    .process-card { position: static; }
-    .plans-bg .plans-inner { padding: 0 24px; }
-    .plans-grid { grid-template-columns: 1fr; }
-    .why-wrap { grid-template-columns: 1fr; gap: 48px; }
-    .sub-bg .sub-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
-    .reviews-inner { padding: 0 24px; }
-    .reviews-grid { grid-template-columns: 1fr; }
-    .area-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
-    .book-bg { padding: 72px 24px; }
-    footer { padding: 36px 24px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-  }
-</style>
-</head>
-<body>
+Provide any tools or materials
+PRICING
+Simple pricing. No surprises.
+Start with a single visit. Most customers upgrade to a subscription after their first drive in the rain.
+ONE-TIME SERVICE — SINGLE VISIT, NO COMMITMENT
+FRONT & BACK
+$89
+windshield & rear window
 
-<!-- NAV -->
-<nav id="nav" role="banner">
-  <a href="#" class="logo" aria-label="Clearline Auto Care — home">
-    <span class="logo-word">Clearline</span>
-    <span class="logo-rule" aria-hidden="true"></span>
-    <span class="logo-co">Auto<br>Care</span>
-  </a>
-  <ul class="nav-links" role="list">
-    <li><a href="#process">How it works</a></li>
-    <li><a href="#plans">Plans</a></li>
-    <li><a href="#why">Why ceramic?</a></li>
-    <li><a href="#area">Service area</a></li>
-    <li><a href="#book" class="nav-cta">Book now</a></li>
-  </ul>
-</nav>
+The two highest-impact surfaces for rain visibility. Perfect entry point to experience the Clearline difference.
+BOOK A VISIT
+FULL SEDAN
+$149
+all glass surfaces
 
-<!-- HERO -->
-<section class="hero" aria-label="Hero — Clearline Auto Care">
-  <div class="hero-texture" aria-hidden="true"></div>
-  <div class="hero-gradient" aria-hidden="true"></div>
-  <canvas id="rain-canvas" aria-hidden="true"></canvas>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Mobile ceramic glass coating</p>
-    <h1>See through<br>anything. <em>Clearly.</em></h1>
-    <p class="hero-sub">Professional-grade ceramic glass protection delivered to your driveway, office, or wherever your car lives. Twice a year, automatically.</p>
-    <div class="hero-actions">
-      <a href="#book" class="btn-primary">Book your first visit</a>
-      <a href="#process" class="btn-outline">See how it works</a>
-    </div>
-  </div>
-  <div class="hero-stats" aria-label="Key service facts">
-    <div class="hero-stat">
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div>
-        <div class="stat-num">12<sup>mo</sup></div>
-        <div class="stat-label">Coating lifespan<br>per application</div>
-      </div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div>
-        <div class="stat-num">90<sup>min</sup></div>
-        <div class="stat-label">Average service<br>visit time</div>
-      </div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div>
-        <div class="stat-num">0</div>
-        <div class="stat-label">Shop visits<br>ever required</div>
-      </div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div>
-        <div class="stat-num">2×</div>
-        <div class="stat-label">Per year,<br>auto-scheduled</div>
-      </div>
-    </div>
-  </div>
-</section>
+Complete protection for standard cars — windshield, rear, and all side windows coated in one visit.
+BOOK A VISIT
+FULL SUV / TRUCK
+$199
+all glass surfaces
 
-<!-- TRUST BAR -->
-<div class="trust-bar" role="list" aria-label="Service highlights">
-  <div class="trust-item" role="listitem"><span class="trust-pip" aria-hidden="true"></span>Glass specialists only</div>
-  <div class="trust-item" role="listitem"><span class="trust-pip" aria-hidden="true"></span>Mobile — we come to you</div>
-  <div class="trust-item" role="listitem"><span class="trust-pip" aria-hidden="true"></span>Twice-yearly subscription</div>
-  <div class="trust-item" role="listitem"><span class="trust-pip" aria-hidden="true"></span>Family plan available</div>
-  <div class="trust-item" role="listitem"><span class="trust-pip" aria-hidden="true"></span>No contracts · cancel anytime</div>
-</div>
+Full coverage for larger vehicles — all windows including rear quarter glass on SUVs, trucks, and vans.
+BOOK A VISIT
 
-<!-- HOW IT WORKS -->
-<div id="process">
-<div class="sec">
-  <div class="eyebrow">The process</div>
-  <h2 class="dark">Five steps. Zero hassle.</h2>
-  <p class="body-text dark">From booking to clear glass in one visit. Subscribers get their second appointment auto-scheduled — no admin, no chasing.</p>
-  <div class="process-wrap">
-    <div class="steps" role="list">
-      <div class="step" role="listitem">
-        <div class="step-n">01</div>
-        <div>
-          <div class="step-title">Book online in under 2 minutes</div>
-          <div class="step-desc">Choose your plan, pick a date, and enter your location. No phone calls, no quotes, no deposit required.</div>
-          <div class="step-tags"><span class="tag">Pick your plan</span><span class="tag">Select a slot</span><span class="tag">Enter location</span></div>
-        </div>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-n">02</div>
-        <div>
-          <div class="step-title">We confirm and come to you</div>
-          <div class="step-desc">You'll get your tech's name and a 30-minute arrival window by SMS. Our van is fully stocked — we bring everything.</div>
-          <div class="step-tags"><span class="tag">SMS confirmation</span><span class="tag">Arrival window</span></div>
-        </div>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-n">03</div>
-        <div>
-          <div class="step-title">Glass decontamination and prep</div>
-          <div class="step-desc">We remove water spots, mineral deposits, and road film that spray-on treatments can't touch. The coating bonds to clean glass — not grime.</div>
-          <div class="step-tags"><span class="tag">Decontamination</span><span class="tag">Polish if needed</span></div>
-        </div>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-n">04</div>
-        <div>
-          <div class="step-title">Ceramic coating, glass by glass</div>
-          <div class="step-desc">Each pane is coated in controlled layers and cured. Most vehicles take 60–90 minutes. SUVs and trucks run 90–120.</div>
-          <div class="step-tags"><span class="tag blue">Ceramic application</span><span class="tag blue">60–90 min total</span></div>
-        </div>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-n">05</div>
-        <div>
-          <div class="step-title">Inspection, care card, and you're done</div>
-          <div class="step-desc">We walk through every pane with you before we leave. Subscribers get their next visit auto-booked for 6 months out.</div>
-          <div class="step-tags"><span class="tag blue">Auto-scheduled next visit</span><span class="tag">Care instructions</span></div>
-        </div>
-      </div>
-    </div>
+OR — PROTECT IT ALL YEAR WITH A SUBSCRIPTION
 
-    <div class="process-card" aria-label="What to prepare for your visit">
-      <div class="card-eyebrow">What you need to have ready</div>
-      <div class="card-big">3</div>
-      <div class="card-label">things — that's it</div>
-      <div class="card-hr"></div>
-      <div class="checklist">
-        <div class="check-row"><span class="check-pip"></span><span class="check-text">Have the car accessible at your chosen location</span></div>
-        <div class="check-row"><span class="check-pip"></span><span class="check-text">Leave about 6 feet of clearance around the vehicle</span></div>
-        <div class="check-row"><span class="check-pip"></span><span class="check-text">Avoid washing the glass for 24 hours after the visit</span></div>
-      </div>
-      <div class="card-hr" style="margin-top:26px;"></div>
-      <div class="card-eyebrow" style="margin-top:22px;">What you don't need to do</div>
-      <div class="checklist">
-        <div class="check-row"><span class="check-pip dim"></span><span class="check-text dim">Pre-wash the car</span></div>
-        <div class="check-row"><span class="check-pip dim"></span><span class="check-text dim">Be home — just reachable by SMS</span></div>
-        <div class="check-row"><span class="check-pip dim"></span><span class="check-text dim">Provide any tools or materials</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+How the subscription works: One annual fee covers two visits — an initial full application in month one, and a top-up & renewal coat at the 6-month mark. Your protection stays active year-round without you having to think about it.
+MOST POPULAR
+ANNUAL SUBSCRIPTION · SEDAN
+$249
+/ year
+full sedan · 2 visits included
+Save $49 vs. two one-time visits
 
-<!-- PLANS -->
-<div id="plans">
-<div class="plans-bg">
-  <div class="plans-inner">
-    <div class="plans-header">
-      <div>
-        <div class="eyebrow">Pricing</div>
-        <h2 class="dark">Simple pricing.<br>No surprises.</h2>
-      </div>
-      <p class="plans-header-note">Start with a single visit. Most customers upgrade to a subscription after their first drive in the rain.</p>
-    </div>
+✦
+Visit 1 — full application, all glass
+✦
+Visit 2 — top-up & renewal coat at 6 months
+✦
+Both visits auto-scheduled — no admin
+✦
+Priority booking slots year-round
+✦
+2-week SMS reminder before each visit
+✦
+Customer portal to manage your plan
+✦
+Cancel before renewal — no penalty
+SUBSCRIBE — SEDAN
+ANNUAL SUBSCRIPTION · SUV / TRUCK
+$299
+/ year
+full SUV / truck · 2 visits included
+Save $99 vs. two one-time visits
 
-    <!-- One-time service pricing -->
-    <div style="margin-bottom:48px;">
-      <p style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-body);margin-bottom:20px;">One-time service — single visit, no commitment</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+✦
+Visit 1 — full application, all glass
+✦
+Visit 2 — top-up & renewal coat at 6 months
+✦
+Both visits auto-scheduled — no admin
+✦
+Priority booking slots year-round
+✦
+2-week SMS reminder before each visit
+✦
+Customer portal to manage your plan
+✦
+Cancel before renewal — no penalty
+SUBSCRIBE — SUV / TRUCK
+FAMILY PLAN
+Ask us
+3+ vehicles · custom quote
+Best per-car rate available
 
-        <div style="background:var(--white);border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:28px 24px;">
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-body);margin-bottom:14px;">Front &amp; Back</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--near-black);line-height:1;">$89</div>
-          <div style="font-size:12px;font-weight:300;color:var(--text-body);margin-top:4px;margin-bottom:18px;">windshield &amp; rear window</div>
-          <div style="height:1px;background:var(--border-light);margin-bottom:16px;"></div>
-          <div style="font-size:13px;font-weight:300;color:var(--text-body);line-height:1.65;margin-bottom:20px;">The two highest-impact surfaces for rain visibility. Perfect entry point to experience the Clearline difference.</div>
-          <a href="#book" style="display:block;text-align:center;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px;border-radius:var(--radius);text-decoration:none;border:1px solid var(--near-black);color:var(--near-black);transition:all .2s;" onmouseover="this.style.background='var(--near-black)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--near-black)'">Book a visit</a>
-        </div>
+✦
+Annual subscription for 3+ vehicles
+✦
+Mix sedan and SUV pricing across the fleet
+✦
+All vehicles done in one appointment
+✦
+Shared portal for the whole household
+✦
+Add or remove vehicles anytime
+✦
+Volume discount applied automatically
+GET A FAMILY QUOTE
+Annual subscription renews automatically. Cancel anytime before your renewal date.  ·  One-time visits available at any time — no subscription required.
+WHY IT MATTERS
+Not a spray. A bond.
+Ceramic coating chemically bonds to your glass. Spray-on treatments sit on top and wash away. Here's what that difference means every time it rains.
+SPRAY TREATMENTS
+CLEARLINE CERAMIC
+Lasts 4–8 weeks
+Up to 12 months
+Sits on glass surface
+Chemically bonded
+Can smear and streak
+Streak-free clarity
+No scratch resistance
+Light scratch protection
+Inconsistent DIY coverage
+Even professional coat
+Ice still grips glass
+Ice slides off
+Better visibility in rain
+At highway speed, water beads and clears the windshield without wipers. You feel the difference on your first rainy drive after the visit.
+Less glare at night
+Road film and dust scatter light. A clean coated surface keeps headlights where they belong — not scattered across your windshield.
+Faster winter mornings
+Ice can't grip ceramic glass the way it grips bare glass. Frost and light ice slide off with minimal effort — no scraping required.
+Glass that stays cleaner
+Dirt and bug splatter can't bond to ceramic the way they bond to bare glass. Between washes, your windows simply look better.
+THE SUBSCRIPTION
+Protection that compounds over time.
+The second coat doesn't just refresh the first — it bonds on top of it, extending durability and deepening the hydrophobic effect. Two visits a year keeps the protection active year-round.
+START YOUR SUBSCRIPTION
+◈
+More than one car in the household?
+The family plan covers 3+ vehicles at $89 per car per visit — all done in a single appointment at the same location.
+YOUR YEAR WITH CLEARLINE
 
-        <div style="background:var(--white);border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:28px 24px;">
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-body);margin-bottom:14px;">Full Sedan</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--near-black);line-height:1;">$149</div>
-          <div style="font-size:12px;font-weight:300;color:var(--text-body);margin-top:4px;margin-bottom:18px;">all glass surfaces</div>
-          <div style="height:1px;background:var(--border-light);margin-bottom:16px;"></div>
-          <div style="font-size:13px;font-weight:300;color:var(--text-body);line-height:1.65;margin-bottom:20px;">Complete protection for standard cars — windshield, rear, and all side windows coated in one visit.</div>
-          <a href="#book" style="display:block;text-align:center;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px;border-radius:var(--radius);text-decoration:none;border:1px solid var(--near-black);color:var(--near-black);transition:all .2s;" onmouseover="this.style.background='var(--near-black)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--near-black)'">Book a visit</a>
-        </div>
+MONTH 1
+First visit — full application
+Decontamination, prep, full ceramic coat on all glass. Next visit auto-booked.
 
-        <div style="background:var(--white);border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:28px 24px;">
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-body);margin-bottom:14px;">Full SUV / Truck</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--near-black);line-height:1;">$199</div>
-          <div style="font-size:12px;font-weight:300;color:var(--text-body);margin-top:4px;margin-bottom:18px;">all glass surfaces</div>
-          <div style="height:1px;background:var(--border-light);margin-bottom:16px;"></div>
-          <div style="font-size:13px;font-weight:300;color:var(--text-body);line-height:1.65;margin-bottom:20px;">Full coverage for larger vehicles — all windows including rear quarter glass on SUVs, trucks, and vans.</div>
-          <a href="#book" style="display:block;text-align:center;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px;border-radius:var(--radius);text-decoration:none;border:1px solid var(--near-black);color:var(--near-black);transition:all .2s;" onmouseover="this.style.background='var(--near-black)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--near-black)'">Book a visit</a>
-        </div>
+MONTH 5
+Reminder sent
+SMS reminder with booking details. Reschedule if needed — no penalty.
 
-      </div>
-    </div>
+MONTH 6
+Second visit — maintenance coat
+Bonds on top of the first layer. Protection deepens and extends.
 
-    <!-- Subscription heading bridge -->
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-      <div style="height:1px;flex:1;background:var(--border-light);"></div>
-      <p style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-body);white-space:nowrap;">Or — protect it all year with a subscription</p>
-      <div style="height:1px;flex:1;background:var(--border-light);"></div>
-    </div>
+MONTH 11
+Renewal reminder
+We confirm your next year before billing — no surprises.
 
-    <!-- Subscription explainer -->
-    <div style="background:rgba(107,188,220,0.07);border:1px solid rgba(107,188,220,0.18);border-radius:var(--radius-md);padding:16px 22px;margin-bottom:28px;font-size:13px;font-weight:300;color:var(--text-body);line-height:1.7;">
-      <strong style="color:var(--near-black);font-weight:500;">How the subscription works:</strong> One annual fee covers two visits — an initial full application in month one, and a top-up &amp; renewal coat at the 6-month mark. Your protection stays active year-round without you having to think about it.
-    </div>
+MONTH 12
+Year 2 begins
+Subscribers report better performance in Year 2. The protection accumulates.
+REVIEWS
+What subscribers say.
+★★★★★
+"I was skeptical after years of Rain-X. After one Clearline visit I drove home in a thunderstorm and barely touched my wipers. The difference is not subtle."
+MARCUS T.
+2023 BMW 5 Series · Subscriber
+★★★★★
+"Three cars, one morning, nobody had to go anywhere. The family plan is genuinely the easiest car-care decision we've ever made."
+PRIYA & DANIEL M.
+3-vehicle family plan · Plantation, FL
+★★★★★
+"The auto-scheduling is what I didn't know I needed. It just shows up every 6 months and my glass is always perfect. I never think about it."
+SOFIA R.
+2022 Mercedes GLE · Year 2 subscriber
+SERVICE AREA
+We come to your postcode.
+We serve the greater South Florida area and are expanding regularly. Check your zip code below to confirm we cover you.
+⬡
+Home, office, or anywhere in between
+Driveways, parking garages, office lots — if your car can park there, we can coat it there.
+⬡
+Same-week availability
+Most bookings confirmed within 48 hours. Subscribers get priority slots before new customers.
+⬡
+Not in range yet?
+We're adding new zones monthly. Drop your zip and we'll notify you the moment we launch in your area.
 
-    <div class="plans-grid">
 
-      <!-- SUBSCRIPTION SEDAN (featured) -->
-      <div class="plan-card featured" style="grid-column:1/2;">
-        <div class="plan-badge">Most popular</div>
-        <div class="plan-name">Annual subscription · Sedan</div>
-        <div style="display:flex;align-items:baseline;gap:10px;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;color:var(--white);line-height:1;">$249</div>
-          <div style="font-size:12px;font-weight:300;color:var(--text-dim);">/ year</div>
-        </div>
-        <div style="font-size:12px;font-weight:300;color:var(--text-dim);margin-top:4px;margin-bottom:10px;">full sedan · 2 visits included</div>
-        <div style="font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.08em;margin-bottom:22px;">Save $49 vs. two one-time visits</div>
-        <div style="height:1px;background:var(--border-dark);margin-bottom:22px;"></div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-check">✦</span>Visit 1 — full application, all glass</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Visit 2 — top-up &amp; renewal coat at 6 months</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Both visits auto-scheduled — no admin</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Priority booking slots year-round</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>2-week SMS reminder before each visit</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Customer portal to manage your plan</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Cancel before renewal — no penalty</div>
-        </div>
-        <a href="#book" class="plan-btn">Subscribe — Sedan</a>
-      </div>
 
-      <!-- SUBSCRIPTION SUV -->
-      <div class="plan-card featured" style="grid-column:2/3;border-color:rgba(107,188,220,0.35);">
-        <div class="plan-name">Annual subscription · SUV / Truck</div>
-        <div style="display:flex;align-items:baseline;gap:10px;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;color:var(--white);line-height:1;">$299</div>
-          <div style="font-size:12px;font-weight:300;color:var(--text-dim);">/ year</div>
-        </div>
-        <div style="font-size:12px;font-weight:300;color:var(--text-dim);margin-top:4px;margin-bottom:10px;">full SUV / truck · 2 visits included</div>
-        <div style="font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.08em;margin-bottom:22px;">Save $99 vs. two one-time visits</div>
-        <div style="height:1px;background:var(--border-dark);margin-bottom:22px;"></div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-check">✦</span>Visit 1 — full application, all glass</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Visit 2 — top-up &amp; renewal coat at 6 months</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Both visits auto-scheduled — no admin</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Priority booking slots year-round</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>2-week SMS reminder before each visit</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Customer portal to manage your plan</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Cancel before renewal — no penalty</div>
-        </div>
-        <a href="#book" class="plan-btn">Subscribe — SUV / Truck</a>
-      </div>
+SERVICE AREA · SOUTH FLORIDA
 
-      <!-- FAMILY PLAN -->
-      <div class="plan-card" style="grid-column:3/4;">
-        <div class="plan-name">Family plan</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--near-black);line-height:1;">Ask us</div>
-        <div style="font-size:12px;font-weight:300;color:var(--text-body);margin-top:4px;margin-bottom:10px;">3+ vehicles · custom quote</div>
-        <div style="font-size:11px;font-weight:500;color:var(--blue-dim);letter-spacing:0.08em;margin-bottom:22px;">Best per-car rate available</div>
-        <div style="height:1px;background:var(--border-light);margin-bottom:22px;"></div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-check">✦</span>Annual subscription for 3+ vehicles</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Mix sedan and SUV pricing across the fleet</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>All vehicles done in one appointment</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Shared portal for the whole household</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Add or remove vehicles anytime</div>
-          <div class="plan-feat"><span class="feat-check">✦</span>Volume discount applied automatically</div>
-        </div>
-        <a href="#book" class="plan-btn">Get a family quote</a>
-      </div>
+CHECK AREA
+GET STARTED
+Your glass, done right. Today.
+Book a one-time visit or start your subscription. We confirm within 24 hours and handle everything from there.
+BOOK A VISIT
+SEE PLANS FIRST
+CLEARLINE
 
-    </div>
-
-    <p style="font-size:12px;font-weight:300;color:var(--text-body);margin-top:24px;text-align:center;">Annual subscription renews automatically. Cancel anytime before your renewal date. &nbsp;·&nbsp; One-time visits available at any time — no subscription required.</p>
-
-  </div>
-</div>
-</div>
-
-<!-- WHY CERAMIC -->
-<div id="why">
-<div class="sec">
-  <div class="eyebrow">Why it matters</div>
-  <h2 class="dark">Not a spray.<br>A bond.</h2>
-  <p class="body-text dark">Ceramic coating chemically bonds to your glass. Spray-on treatments sit on top and wash away. Here's what that difference means every time it rains.</p>
-  <div class="why-wrap">
-    <div>
-      <table class="compare" aria-label="Ceramic coating vs spray-on treatments comparison">
-        <thead>
-          <tr>
-            <th>Spray treatments</th>
-            <th class="ours">Clearline ceramic</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Lasts 4–8 weeks</td><td class="ours strong">Up to 12 months</td></tr>
-          <tr><td>Sits on glass surface</td><td class="ours strong">Chemically bonded</td></tr>
-          <tr><td>Can smear and streak</td><td class="ours strong">Streak-free clarity</td></tr>
-          <tr><td>No scratch resistance</td><td class="ours strong">Light scratch protection</td></tr>
-          <tr><td>Inconsistent DIY coverage</td><td class="ours strong">Even professional coat</td></tr>
-          <tr><td>Ice still grips glass</td><td class="ours strong">Ice slides off</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="why-benefits">
-      <div>
-        <div class="why-b-title">Better visibility in rain</div>
-        <div class="why-b-desc">At highway speed, water beads and clears the windshield without wipers. You feel the difference on your first rainy drive after the visit.</div>
-      </div>
-      <div>
-        <div class="why-b-title">Less glare at night</div>
-        <div class="why-b-desc">Road film and dust scatter light. A clean coated surface keeps headlights where they belong — not scattered across your windshield.</div>
-      </div>
-      <div>
-        <div class="why-b-title">Faster winter mornings</div>
-        <div class="why-b-desc">Ice can't grip ceramic glass the way it grips bare glass. Frost and light ice slide off with minimal effort — no scraping required.</div>
-      </div>
-      <div>
-        <div class="why-b-title">Glass that stays cleaner</div>
-        <div class="why-b-desc">Dirt and bug splatter can't bond to ceramic the way they bond to bare glass. Between washes, your windows simply look better.</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- SUBSCRIPTION -->
-<div class="sub-bg">
-  <div class="sub-inner">
-    <div>
-      <div class="eyebrow">The subscription</div>
-      <h2 class="light">Protection that<br>compounds over time.</h2>
-      <p class="body-text light" style="margin-bottom:32px;">The second coat doesn't just refresh the first — it bonds on top of it, extending durability and deepening the hydrophobic effect. Two visits a year keeps the protection active year-round.</p>
-      <a href="#book" class="btn-primary">Start your subscription</a>
-      <div class="family-box">
-        <div class="family-icon">◈</div>
-        <div>
-          <div class="family-title">More than one car in the household?</div>
-          <div class="family-desc">The family plan covers 3+ vehicles at $89 per car per visit — all done in a single appointment at the same location.</div>
-        </div>
-      </div>
-    </div>
-    <div class="sub-card" aria-label="Your year with Clearline subscription timeline">
-      <div class="sub-card-head">Your year with Clearline</div>
-      <div class="timeline">
-        <div class="tl-event">
-          <div class="tl-pip"></div>
-          <div style="flex:1">
-            <div class="tl-month">Month 1</div>
-            <div class="tl-title">First visit — full application</div>
-            <div class="tl-desc">Decontamination, prep, full ceramic coat on all glass. Next visit auto-booked.</div>
-          </div>
-        </div>
-        <div class="tl-event">
-          <div class="tl-pip dim"></div>
-          <div style="flex:1">
-            <div class="tl-month dim">Month 5</div>
-            <div class="tl-title dim">Reminder sent</div>
-            <div class="tl-desc">SMS reminder with booking details. Reschedule if needed — no penalty.</div>
-          </div>
-        </div>
-        <div class="tl-event">
-          <div class="tl-pip"></div>
-          <div style="flex:1">
-            <div class="tl-month">Month 6</div>
-            <div class="tl-title">Second visit — maintenance coat</div>
-            <div class="tl-desc">Bonds on top of the first layer. Protection deepens and extends.</div>
-          </div>
-        </div>
-        <div class="tl-event">
-          <div class="tl-pip dim"></div>
-          <div style="flex:1">
-            <div class="tl-month dim">Month 11</div>
-            <div class="tl-title dim">Renewal reminder</div>
-            <div class="tl-desc">We confirm your next year before billing — no surprises.</div>
-          </div>
-        </div>
-        <div class="tl-event">
-          <div class="tl-pip"></div>
-          <div style="flex:1">
-            <div class="tl-month">Month 12</div>
-            <div class="tl-title">Year 2 begins</div>
-            <div class="tl-desc">Subscribers report better performance in Year 2. The protection accumulates.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<div class="reviews-bg">
-  <div class="reviews-inner">
-    <div class="eyebrow">Reviews</div>
-    <h2 class="dark">What subscribers say.</h2>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="review-quote">"I was skeptical after years of Rain-X. After one Clearline visit I drove home in a thunderstorm and barely touched my wipers. The difference is not subtle."</p>
-        <div class="review-author">Marcus T.</div>
-        <div class="review-vehicle">2023 BMW 5 Series · Subscriber</div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="review-quote">"Three cars, one morning, nobody had to go anywhere. The family plan is genuinely the easiest car-care decision we've ever made."</p>
-        <div class="review-author">Priya & Daniel M.</div>
-        <div class="review-vehicle">3-vehicle family plan · Plantation, FL</div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="review-quote">"The auto-scheduling is what I didn't know I needed. It just shows up every 6 months and my glass is always perfect. I never think about it."</p>
-        <div class="review-author">Sofia R.</div>
-        <div class="review-vehicle">2022 Mercedes GLE · Year 2 subscriber</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICE AREA -->
-<div id="area">
-<div class="area-bg">
-  <div class="area-inner">
-    <div>
-      <div class="eyebrow">Service area</div>
-      <h2 class="dark">We come to<br>your postcode.</h2>
-      <p class="body-text dark" style="margin-bottom:32px;">We serve the greater South Florida area and are expanding regularly. Check your zip code below to confirm we cover you.</p>
-      <div class="area-features">
-        <div class="area-feat">
-          <div class="area-feat-icon" aria-hidden="true">⬡</div>
-          <div>
-            <div class="area-feat-title">Home, office, or anywhere in between</div>
-            <div class="area-feat-desc">Driveways, parking garages, office lots — if your car can park there, we can coat it there.</div>
-          </div>
-        </div>
-        <div class="area-feat">
-          <div class="area-feat-icon" aria-hidden="true">⬡</div>
-          <div>
-            <div class="area-feat-title">Same-week availability</div>
-            <div class="area-feat-desc">Most bookings confirmed within 48 hours. Subscribers get priority slots before new customers.</div>
-          </div>
-        </div>
-        <div class="area-feat">
-          <div class="area-feat-icon" aria-hidden="true">⬡</div>
-          <div>
-            <div class="area-feat-title">Not in range yet?</div>
-            <div class="area-feat-desc">We're adding new zones monthly. Drop your zip and we'll notify you the moment we launch in your area.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="area-map-wrap">
-      <div class="area-map" role="img" aria-label="Service area map — replace with Google Maps embed">
-        <div class="area-map-pin" aria-hidden="true">
-          <div class="pin-ring"></div>
-          <div class="pin-ring r2"></div>
-          <div class="pin-dot"></div>
-        </div>
-        <p class="area-map-label">Service area · South Florida</p>
-      </div>
-      <div class="zip-row" role="search" aria-label="Check zip code coverage">
-        <input type="text" class="zip-in" id="zip" placeholder="Enter your zip code" maxlength="5" aria-label="Zip code">
-        <button class="zip-btn" id="zip-btn" type="button">Check area</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- BOOK CTA -->
-<div id="book">
-<div class="book-bg">
-  <div class="book-inner">
-    <div class="eyebrow" style="justify-content:center;">Get started</div>
-    <h2 class="light" style="text-align:center;max-width:580px;margin:0 auto 16px;">Your glass, done right. <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blue);">Today.</em></h2>
-    <p class="body-text light" style="text-align:center;margin:0 auto;">Book a one-time visit or start your subscription. We confirm within 24 hours and handle everything from there.</p>
-    <div class="book-actions">
-      <a href="#" class="btn-primary">Book a visit</a>
-      <a href="#plans" class="btn-outline" style="color:var(--text-mid)">See plans first</a>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="#" class="logo" aria-label="Clearline Auto Care">
-      <span class="logo-word" style="font-size:13px;">Clearline</span>
-      <span class="logo-rule" style="height:20px;"></span>
-      <span class="logo-co" style="font-size:8px;">Auto<br>Care</span>
-    </a>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="#process">How it works</a>
-      <a href="#plans">Plans</a>
-      <a href="#why">Why ceramic?</a>
-      <a href="#area">Service area</a>
-      <a href="#">Privacy</a>
-      <a href="#">Contact</a>
-    </nav>
-    <p class="footer-copy">&copy; 2026 Clearline Auto Care</p>
-  </div>
-</footer>
-
-<script>
-/* Nav scroll */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-/* Rain bead animation */
-(function() {
-  const canvas = document.getElementById('rain-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let beads = [], W, H;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
-
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize, { passive: true });
-
-  function newBead(randomY) {
-    return {
-      x: Math.random() * W,
-      y: randomY ? Math.random() * H : -10,
-      r: 1.5 + Math.random() * 3.5,
-      speed: 0.5 + Math.random() * 0.9,
-      trail: [],
-      alpha: 0.3 + Math.random() * 0.55,
-      wobT: Math.random() * Math.PI * 2,
-      wobSpd: 0.018 + Math.random() * 0.025,
-      wobAmt: (Math.random() - 0.5) * 0.4,
-    };
-  }
-  for (let i = 0; i < 32; i++) beads.push(newBead(true));
-
-  const c = '107,188,220';
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    beads.forEach(b => {
-      b.wobT += b.wobSpd;
-      b.x += Math.sin(b.wobT) * b.wobAmt;
-      b.trail.push({ x: b.x, y: b.y });
-      if (b.trail.length > 14) b.trail.shift();
-      b.y += b.speed;
-
-      if (b.trail.length > 1) {
-        ctx.beginPath();
-        ctx.moveTo(b.trail[0].x, b.trail[0].y);
-        b.trail.forEach(p => ctx.lineTo(p.x, p.y));
-        ctx.strokeStyle = `rgba(${c},${b.alpha * 0.1})`;
-        ctx.lineWidth = b.r * 0.4;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-      }
-      ctx.beginPath();
-      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${c},${b.alpha * 0.3})`;
-      ctx.fill();
-
-      if (b.y > H + 16) Object.assign(b, newBead(false));
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* Pricing tier switcher */
-const tiers = {
-  essential: {
-    label: '<strong style="color:var(--near-black);font-weight:500;">Front &amp; Back:</strong> Windshield and rear window only — the two highest-impact surfaces for rain visibility and glare. Perfect entry point to experience the coating.',
-    oneTime: 89,  subPrice: 71,  subWas: 89,  famPrice: 60,  famWas: 89,
-    perOnetime: 'front &amp; back · single visit',
-    perSub:     'per visit · front &amp; back · billed twice yearly',
-    perFamily:  'per vehicle · front &amp; back · 3+ cars · twice yearly',
-    featOnetime:'Ceramic coat — windshield &amp; rear window',
-    featSub:    'Everything in one-time — front &amp; back',
-    subSave:    'Save $36/year vs. one-time',
-    famSave:    'Save $58/car/year vs. one-time',
-  },
-  sedan: {
-    label: '<strong style="color:var(--near-black);font-weight:500;">Full Sedan:</strong> All glass surfaces — windshield, rear, and all side windows. Complete protection for a standard car. Most popular full-coverage option.',
-    oneTime: 149, subPrice: 119, subWas: 149, famPrice: 99,  famWas: 149,
-    perOnetime: 'full sedan · all glass · single visit',
-    perSub:     'per visit · full sedan · billed twice yearly',
-    perFamily:  'per vehicle · full sedan · 3+ cars · twice yearly',
-    featOnetime:'Ceramic coat — all glass surfaces',
-    featSub:    'Everything in one-time — full sedan',
-    subSave:    'Save $60/year vs. one-time',
-    famSave:    'Save $100/car/year vs. one-time',
-  },
-  suv: {
-    label: '<strong style="color:var(--near-black);font-weight:500;">Full SUV / Truck:</strong> All glass on larger vehicles — windshield, rear, all side windows, and rear quarter glass. Accounts for the additional surface area on SUVs, trucks, and vans.',
-    oneTime: 199, subPrice: 159, subWas: 199, famPrice: 129, famWas: 199,
-    perOnetime: 'full SUV / truck · all glass · single visit',
-    perSub:     'per visit · full SUV / truck · billed twice yearly',
-    perFamily:  'per vehicle · full SUV / truck · 3+ cars · twice yearly',
-    featOnetime:'Ceramic coat — all glass including quarter windows',
-    featSub:    'Everything in one-time — full SUV / truck',
-    subSave:    'Save $80/year vs. one-time',
-    famSave:    'Save $140/car/year vs. one-time',
-  }
-};
-
-function setTier(t) {
-  const d = tiers[t];
-  // buttons
-  document.querySelectorAll('.tier-btn').forEach(b => {
-    const active = b.dataset.tier === t;
-    b.style.background = active ? 'var(--near-black)' : 'transparent';
-    b.style.color = active ? 'var(--white)' : 'var(--text-body)';
-  });
-  // desc
-  document.getElementById('tier-desc-text').innerHTML = d.label;
-  // one-time
-  document.getElementById('price-onetime').textContent = '$' + d.oneTime;
-  document.getElementById('per-onetime').innerHTML = d.perOnetime;
-  document.getElementById('feat-onetime-coverage').innerHTML = d.featOnetime;
-  // subscription
-  document.getElementById('price-sub-num').textContent = d.subPrice;
-  document.getElementById('price-sub-was').textContent = 'was $' + d.subWas;
-  document.getElementById('per-sub').innerHTML = d.perSub;
-  document.getElementById('feat-sub-coverage').innerHTML = d.featSub;
-  document.getElementById('sub-save-label').textContent = d.subSave;
-  // family
-  document.getElementById('price-family-num').textContent = d.famPrice;
-  document.getElementById('price-family-was').textContent = 'was $' + d.famWas;
-  document.getElementById('per-family').innerHTML = d.perFamily;
-  document.getElementById('family-save-label').textContent = d.famSave;
-}
-
-/* Zip check */
-document.getElementById('zip-btn').addEventListener('click', function() {
-  const val = document.getElementById('zip').value.trim();
-  if (/^\d{5}$/.test(val)) {
-    alert('Great news — we service your area! Click "Book a visit" above to get started.');
-  } else {
-    alert('Please enter a valid 5-digit zip code.');
-  }
-});
-</script>
-</body>
-</html>
+AUTO
+CARE
+HOW IT WORKS
+PLANS
+WHY CERAMIC?
+SERVICE AREA
+PRIVACY
+CONTACT
+© 2026 Clearline Auto Care
