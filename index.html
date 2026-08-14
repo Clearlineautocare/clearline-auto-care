@@ -479,7 +479,8 @@
     .reviews-inner { padding: 0 24px; }
     .reviews-grid { grid-template-columns: 1fr; }
     .area-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
-    .book-bg { padding: 72px 24px; }
+    .book-bg { padding: 72px 24px !important; }
+    #book .book-bg > div > div { grid-template-columns: 1fr !important; gap: 48px !important; }
     footer { padding: 36px 24px; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1030,14 +1031,95 @@
 
 <!-- BOOK CTA -->
 <div id="book">
-<div class="book-bg">
-  <div class="book-inner">
-    <div class="eyebrow" style="justify-content:center;">Get started</div>
-    <h2 class="light" style="text-align:center;max-width:580px;margin:0 auto 16px;">Your glass, done right. <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blue);">Today.</em></h2>
-    <p class="body-text light" style="text-align:center;margin:0 auto;">Book a one-time visit or start your subscription. We confirm within 24 hours and handle everything from there.</p>
-    <div class="book-actions">
-      <a href="#" class="btn-primary">Book a visit</a>
-      <a href="#plans" class="btn-outline" style="color:var(--text-mid)">See plans first</a>
+<div class="book-bg" style="padding:100px 52px;">
+  <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+
+      <!-- Left: headline + info -->
+      <div>
+        <div class="eyebrow">Book your visit</div>
+        <h2 class="light" style="margin-bottom:16px;">Your glass, done right. <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blue);">Today.</em></h2>
+        <p class="body-text light" style="margin-bottom:36px;">Fill in your details and we'll confirm within 24 hours. Mobile service — we come to you anywhere in Miami-Dade, Broward, or Palm Beach county.</p>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:14px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(107,188,220,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--blue);">1</div>
+            <p style="font-size:13px;font-weight:300;color:var(--text-mid);margin:0;">Fill in your details below — takes under 2 minutes</p>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(107,188,220,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--blue);">2</div>
+            <p style="font-size:13px;font-weight:300;color:var(--text-mid);margin:0;">We confirm your booking within 24 hours by phone or email</p>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(107,188,220,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--blue);">3</div>
+            <p style="font-size:13px;font-weight:300;color:var(--text-mid);margin:0;">We come to you — your driveway, office, wherever works</p>
+          </div>
+        </div>
+        <div style="margin-top:36px;padding:20px 22px;background:rgba(107,188,220,0.07);border:1px solid rgba(107,188,220,0.18);border-radius:var(--radius-md);">
+          <p style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.8);margin-bottom:4px;">Questions? Call us directly</p>
+          <a href="tel:+19544493589" style="font-size:20px;font-weight:300;color:var(--white);text-decoration:none;letter-spacing:-0.01em;">+1 (954) 449-3589</a>
+          <p style="font-size:11px;font-weight:300;color:var(--text-dim);margin-top:4px;">Mon–Sat, 8am–7pm · Tyron &amp; Nick</p>
+        </div>
+      </div>
+
+      <!-- Right: booking form -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(107,188,220,0.2);border-radius:var(--radius-lg);padding:40px;">
+        <p style="font-size:12px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);margin-bottom:28px;">Your details</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">First name *</label>
+              <input id="book-fname" type="text" placeholder="John" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Last name *</label>
+              <input id="book-lname" type="text" placeholder="Smith" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Phone number *</label>
+            <input id="book-phone" type="tel" placeholder="(954) 000-0000" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Email address *</label>
+            <input id="book-email" type="email" placeholder="john@email.com" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Vehicle type *</label>
+            <select id="book-vehicle" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:#1A1A1D;outline:none;box-sizing:border-box;">
+              <option value="">Select your vehicle type</option>
+              <option value="sedan-frontback">Sedan — Front &amp; Back only ($89)</option>
+              <option value="sedan-full">Sedan — Full service ($149)</option>
+              <option value="suv-frontback">SUV / Truck — Front &amp; Back only ($89)</option>
+              <option value="suv-full">SUV / Truck — Full service ($199)</option>
+              <option value="subscription-sedan">Annual Subscription — Sedan ($249/yr)</option>
+              <option value="subscription-suv">Annual Subscription — SUV / Truck ($299/yr)</option>
+              <option value="family">Family Plan — 3+ vehicles (get a quote)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Preferred date</label>
+            <input id="book-date" type="date" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;color-scheme:dark;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+
+          <div>
+            <label style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:7px;">Service location *</label>
+            <input id="book-location" type="text" placeholder="Your address, office, or area" style="width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--white);background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+
+          <div id="book-msg-wrap" style="display:none;">
+            <p id="book-msg" style="font-size:13px;padding:12px 14px;border-radius:var(--radius);margin:0;"></p>
+          </div>
+
+          <button onclick="handleBooking()" style="width:100%;background:var(--blue);color:var(--black);border:none;padding:15px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:background .2s;margin-top:4px;" onmouseover="this.style.background='var(--blue-bright)'" onmouseout="this.style.background='var(--blue)'">Request my booking</button>
+          <p style="font-size:11px;font-weight:300;color:var(--text-dim);text-align:center;margin:0;">We'll confirm within 24 hours · No payment required now</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1191,6 +1273,38 @@ function setTier(t) {
   document.getElementById('price-family-was').textContent = 'was $' + d.famWas;
   document.getElementById('per-family').innerHTML = d.perFamily;
   document.getElementById('family-save-label').textContent = d.famSave;
+}
+
+/* Booking form */
+function handleBooking() {
+  const fname = document.getElementById('book-fname').value.trim();
+  const lname = document.getElementById('book-lname').value.trim();
+  const phone = document.getElementById('book-phone').value.trim();
+  const email = document.getElementById('book-email').value.trim();
+  const vehicle = document.getElementById('book-vehicle').value;
+  const location = document.getElementById('book-location').value.trim();
+  const date = document.getElementById('book-date').value;
+  const msgWrap = document.getElementById('book-msg-wrap');
+  const msg = document.getElementById('book-msg');
+
+  if (!fname || !lname || !phone || !email || !vehicle || !location) {
+    msgWrap.style.display = 'block';
+    msg.style.background = 'rgba(220,50,50,0.15)';
+    msg.style.color = '#ff8080';
+    msg.style.border = '1px solid rgba(220,50,50,0.3)';
+    msg.textContent = 'Please fill in all required fields before submitting.';
+    return;
+  }
+
+  const subject = 'Booking Request — Clearline Auto Care';
+  const body = `Name: ${fname} ${lname}%0APhone: ${phone}%0AEmail: ${email}%0AVehicle: ${vehicle}%0APreferred Date: ${date || 'Flexible'}%0ALocation: ${location}`;
+  window.location.href = `mailto:info@clearlineautocare.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  msgWrap.style.display = 'block';
+  msg.style.background = 'rgba(107,188,220,0.1)';
+  msg.style.color = 'var(--blue)';
+  msg.style.border = '1px solid rgba(107,188,220,0.25)';
+  msg.textContent = "Opening your email app — we'll confirm within 24 hours!";
 }
 
 /* Contact form */
