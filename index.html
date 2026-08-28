@@ -537,7 +537,9 @@
     .reviews-grid { grid-template-columns: 1fr; }
     .area-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
     .book-bg { padding: 72px 24px !important; }
-    #book .book-bg > div > div { grid-template-columns: 1fr !important; gap: 48px !important; }
+    .contact-bg { padding: 72px 0 !important; }
+    .contact-inner { padding: 0 24px !important; }
+    .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     footer { padding: 36px 24px; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1042,13 +1044,13 @@
 
 <!-- CONTACT / BOOKING -->
 <div id="contact">
-<div style="background:var(--off-white);padding:100px 0;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 52px;">
+<div class="contact-bg" style="background:var(--off-white);padding:100px 0;">
+  <div class="contact-inner" style="max-width:1200px;margin:0 auto;padding:0 52px;">
     <div class="eyebrow">Book your visit</div>
     <h2 class="dark">Let's get your glass<br>sorted. <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blue-dim);">Tell us about your car.</em></h2>
     <p class="body-text dark" style="margin-bottom:52px;">Fill in your details below and we'll confirm your booking within 24 hours. No payment needed now — we come to you anywhere in Miami-Dade, Broward, or Palm Beach.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start;">
+    <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start;">
 
       <!-- Left: contact info -->
       <div style="display:flex;flex-direction:column;gap:24px;">
